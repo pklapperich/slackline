@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"strings"
 )
 
 const postMessageURL = "/services/hooks/incoming-webhook?token="
@@ -63,13 +64,16 @@ func main() {
 			return
 		}
 
+		domain := req.URL.Query().Get("domain")
+		token := req.URL.Query().Get("token")
+
+		username := username+"-"+strings.Split(domain, ".")[0]
+
 		msg := slackMessage{
 			Username: username,
 			Text:     text,
 		}
 
-		domain := req.URL.Query().Get("domain")
-		token := req.URL.Query().Get("token")
 
 		if os.Getenv("DEBUG_BRIDGE") == domain {
 			fmt.Printf("Request: %v\n", req.PostForm)
