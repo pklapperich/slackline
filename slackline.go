@@ -64,10 +64,11 @@ func main() {
 			return
 		}
 
+		frdomain := req.URL.Query().Get("frslack")
 		domain := req.URL.Query().Get("domain")
 		token := req.URL.Query().Get("token")
 
-		username = username+"-"+strings.Split(domain, ".")[0]
+		username = username+"-"+frdomain
 
 		msg := slackMessage{
 			Username: username,
