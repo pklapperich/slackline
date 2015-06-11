@@ -31,8 +31,8 @@ You just need to follow the following steps to setup a channel.
 
  1. Create a channel you want to share with another team.
  2. Create an Incoming WebHook integration and select the channel you created.
- 3. Copy the Incoming WebHook token (you can find it in the left column
-    from the integration page).
+ 3. Copy the Incoming WebHook token from the URL Slack provides for the WebHook. The token is the last element of 
+ the URL, ie: ```https://hooks.slack.com/services/[NOT THIS]/[NOT THIS]/[THIS IS THE TOKEN]```
  4. Create a URL with the following format: ```http://slackline.herokuapp.com/bridge/?token=[TOKEN]&domain=[YOUR_SLACK_DOMAIN]``` send it to the person setting up the other team.
  5. The person setting up the other team will send you a similar
     URL with their domain and token, create an Outgoing WebHook with
@@ -45,6 +45,31 @@ Here you have an example of a Outgoing WebHook URL:
 
 ```
 http://slackline.herokuapp.com/bridge/?token=bcaa5867b1d42142b74eDVA4&domain=avengers.slack.com
+```
+
+## Bridging 3 or more channels
+
+The above 5 steps will work for bridging 2 channels together. If you want to bridge 3 channels, simply add the outgoing URLs for each of 
+the other two teams into your Outgoing WebHooks (1 URL per line). Have the other 2 teams do the same. There's no limit to how many
+teams you can combine this way.
+
+Optionally you can add "from=[identifier]" to the outgoing URLs you enter in step 5. This will
+append the identifier to the end of the user name so people know where that user came from. 
+
+Ex: If your username is "Jeffer", then setting a url of:
+```
+http://slackline.herokuapp.com/bridge/?token=bcaa5867b1d42142b74eDVA4&domain=avengers.slack.com&from=Taskmasters
+```
+will cause messages you chat to show up in the avenger's team as
+```
+Jeffery Taskmasters [bot]
+hey guys
+```
+
+instead of the usual
+```
+Jeffery [bot]
+hey guys
 ```
 
 ## How does it work?
