@@ -65,7 +65,7 @@ func main() {
 
 		from := req.URL.Query().Get("from")
 		domain := req.URL.Query().Get("domain")
-		token := req.URL.Query().Get("token"
+		token := req.URL.Query().Get("token")
 
 		if from != "" {
 		   username = username+" "+from
