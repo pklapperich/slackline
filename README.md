@@ -1,5 +1,11 @@
 # Share channels between Slack accounts!
 
+## How's this work
+
+In an ideal world you'd point an outbound webhook from your team's slack directly to an inbound webhook of your friend's slack team. Since that doesn't work, point your outbound webhook to this project which will re-format the data and forward it along to the inbound webhook of your friend's team. Now messages in your channel will show up in your friend's channel. Once your friend does the same with her team, you have bi-directional communication.
+
+Slackline requires no configuration on the server. Everything is handled via URL parameters.
+
 ## Why did we develop Slackline?
 
 We are big fans of [Slack][slack] and have been using it for a while
@@ -11,24 +17,27 @@ This gave way to better way to share channels across between slack teams: [slack
 
 **You can try it for free joining our [#slackline shared channel](http://slackline.io/shared_channels/slackline)**
 
-## What is the difference between the free and paid Slackline?
+## ~What is the difference between the free and paid Slackline?~
 
-The free version is a light integration with the Slack API just using incoming and outgoing webhooks.
+Slackline.io has closed.
 
-[slackline.io](http://slackline.io) allows you to:
- - See the avatars from the users in the other team.
- - Easier to setup: create your shared channel, share the URL to the shared channel with somebody in the other team and they can connect their team by themselves. No need to exchange tokens or manually craft URLs.
- - Support for more than two teams connected to the same shared channel.
- - Any team can change the channel they are using with no need to change anything in the other teams.
+~The free version is a light integration with the Slack API just using incoming and outgoing webhooks.~
 
-[slackline.io](http://slackline.io) is still under development, but you can try it for free connecting to our [#slackline shared channel](http://slackline.io/shared_channels/slackline) and we'll notify you as soon as it's available.
+~[slackline.io](http://slackline.io) allows you to~:
+ - ~See the avatars from the users in the other team.~
+ - ~Easier to setup: create your shared channel, share the URL to the shared channel with somebody in the other team and they can connect their team by themselves. No need to exchange tokens or manually craft URLs.~
+ - ~Support for more than two teams connected to the same shared channel.~
+ - ~Any team can change the channel they are using with no need to change anything in the other teams.~
+
+~[slackline.io](http://slackline.io) is still under development, but you can try it for free connecting to our [#slackline shared channel](http://slackline.io/shared_channels/slackline) and we'll notify you as soon as it's available.~
 
 ## How do I use slackline for free?
 
-We would obviously recommend you use [slackline.io](http://slackline.io) since it's easier to setup and seeing avatars from those on the other side really rocks. But, if you want to use this version, that's cool with us too! :)
+~We would obviously recommend you use [slackline.io](http://slackline.io) since it's easier to setup and seeing avatars from those on the other side really rocks. But, if you want to use this version, that's cool with us too! :)~
 
 You just need to follow the following steps to setup a channel.
 
+ 0. Host this project somewhere. A free heroku app will go pretty far, just note that the first message will be delayed while your instance boots up.
  1. Create a channel you want to share with another team.
  2. Create an Incoming WebHook integration and select the channel you created.
  3. Copy the Incoming WebHook token from the URL Slack provides for the WebHook. The token is the last element of 
@@ -38,8 +47,7 @@ You just need to follow the following steps to setup a channel.
     URL with their domain and token, create an Outgoing WebHook with
     that URL and the channel you created in step 1.
 
-Once you have done this in both teams, you will have a chat-room
-shared by both teams.
+Once you have done this in both teams, you will have a chat-room shared by both teams.
 
 Here you have an example of a Outgoing WebHook URL:
 
